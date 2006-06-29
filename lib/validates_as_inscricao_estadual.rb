@@ -43,8 +43,8 @@ module ValidacaoInscricaoEstadual
     private
     def validar_formato
       if @cadastro.to_s.length > @cadastro_tamanho
-        puts "Numero de inscricao estadual muito grande"
-        exit
+#        puts "Numero de inscricao estadual muito grande"
+ #       exit
       end
     end
 
@@ -111,6 +111,7 @@ module ActiveRecord
         validates_each(attr_names, configuration) do |record, attr_name, value|
           next if value.blank?
           
+          valido = false
           ValidacaoInscricaoEstadual.estados.each do |estado|
             eval <<-EOF
             if ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?
