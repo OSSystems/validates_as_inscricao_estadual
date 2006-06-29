@@ -17,7 +17,6 @@ module ValidacaoInscricaoEstadual
         end
 
         setup
-        validar_formato
         calcular
         
       rescue LoadError
@@ -26,9 +25,6 @@ module ValidacaoInscricaoEstadual
       end
     end
     
-    def validar_formato
-    end
-
     def setup
       @pesos = ["1", "3", "4", "5", "6", "7", "8", "10"]
       @pesos2 = ["3", "2", "10", "9", "8", "7", "6", "5", "4", "3", "2"]
@@ -56,6 +52,11 @@ module ValidacaoInscricaoEstadual
           return false
         end
       end
+    end
+
+    public
+    def valido?
+      return validar
     end
 
     def calcular

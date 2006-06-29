@@ -13,7 +13,6 @@ module ValidacaoInscricaoEstadual
         @uf = classe
 
         setup
-        validar_formato
         calcular
 
       rescue LoadError
@@ -27,7 +26,7 @@ module ValidacaoInscricaoEstadual
       acertos = 0
       1.upto(@digitos_tamanho) do |i|
         eval <<-EOF
-        if @digito#{i}.to_i ==  @cadastro[@cadastro.length-i].to_i 
+        if @digito#{i}.to_i == @cadastro[@cadastro.length-i].to_i 
           acertos += 1
         end
         EOF
@@ -43,9 +42,10 @@ module ValidacaoInscricaoEstadual
     private
     def validar_formato
       if @cadastro.to_s.length > @cadastro_tamanho
-#        puts "Numero de inscricao estadual muito grande"
- #       exit
+        puts "Numero de inscricao estadual muito grande => #{@uf}" if @uf == "AC"
+        return false
       end
+      return true
     end
 
     private
@@ -62,7 +62,16 @@ module ValidacaoInscricaoEstadual
 
     public
     def valido?
-      return validar
+    #  print "testando #{@uf} => " if @uf == "AC"
+      if validar_formato
+   #     print "passo" if @uf == "AC"
+  #      puts if @uf == "AC"
+        return validar
+      else
+ #       print "nao" if @uf == "AC"
+#        puts if @uf == "AC"
+        return false
+      end
     end
   end
 
