@@ -1,3 +1,5 @@
+$:.unshift(File.dirname(__FILE__) + '/')
+
 module ValidacaoInscricaoEstadual
   class Base
     attr_reader :pesos
@@ -64,3 +66,29 @@ module ValidacaoInscricaoEstadual
     end
   end
 end
+
+require 'AC'
+require 'AL'
+require 'AP'
+require 'BA'
+require 'CE'
+require 'DF'
+require 'ES'
+require 'GO'
+require 'MA'
+require 'MT'
+require 'MG'
+require 'PA'
+require 'PB'
+require 'PR'
+require 'PE'
+require 'PI'
+require 'RJ'
+require 'RN'
+require 'RS'
+require 'RO'
+require 'RR'
+require 'SC'
+require 'SP'
+require 'SE'
+require 'TO'
