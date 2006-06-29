@@ -207,8 +207,4 @@ class EmailsTest < Test::Unit::TestCase
       assert ( not ValidacaoInscricaoEstadual::TO.new("TO", "38094382").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::TO.new("TO", "cmkckm9345").valido? ), "Numero(e outros caracteres) invalido passou"
     end    
-
-    def test_nada
-      puts ValidacaoInscricaoEstadual.estados
-    end
 end

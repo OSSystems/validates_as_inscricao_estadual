@@ -111,15 +111,13 @@ module ActiveRecord
         validates_each(attr_names, configuration) do |record, attr_name, value|
           next if value.blank?
           
-          estados = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
-                     "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",
-                     "RS", "RR", "SC", "SP", "SE", "TO"]
-          valido = false
-          estados.each do |estado|
-            if ValidacaoInscricaoEstadual.new(value, estado).valido?
+          ValidacaoInscricaoEstadual.estados.each do |estado|
+            eval <<-EOF
+            if ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?
               valido = true
               break
             end
+            EOF
           end
             
           unless valido
