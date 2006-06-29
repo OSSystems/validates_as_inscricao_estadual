@@ -6,7 +6,7 @@ module ValidacaoInscricaoEstadual
     attr_reader :cadastro
     attr_reader :cadastro_tamanho
     attr_reader :digitos_tamanho
-    
+
     def initialize(classe, cadastro)
       begin 
         @cadastro = cadastro.scan(/[0-9]/).collect{|x| x.to_i}
@@ -65,6 +65,14 @@ module ValidacaoInscricaoEstadual
       return validar
     end
   end
+
+  def self.estados
+    @estados ||= []
+  end
+  
+  def self.registrar_estado(estado)
+    estados.push(estado) if not estados.include?(estado)
+  end
 end
 
 require 'AC'
@@ -92,3 +100,33 @@ require 'SC'
 require 'SP'
 require 'SE'
 require 'TO'
+
+module ActiveRecord
+  module Validations
+    module ClassMethods
+      def validates_as_inscricao_estadual(*attr_names)
+        configuration = { :message => "is invalid" }
+        configuration.update(attr_names.pop) if attr_names.last.is_a?(Hash)
+ 	
+        validates_each(attr_names, configuration) do |record, attr_name, value|
+          next if value.blank?
+          
+          estados = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA",
+                     "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN",
+                     "RS", "RR", "SC", "SP", "SE", "TO"]
+          valido = false
+          estados.each do |estado|
+            if ValidacaoInscricaoEstadual.new(value, estado).valido?
+              valido = true
+              break
+            end
+          end
+            
+          unless valido
+            record.errors.add(attr_name, configuration[:message])
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("MT")
+
 module ValidacaoInscricaoEstadual
   class MT < Base
     def setup

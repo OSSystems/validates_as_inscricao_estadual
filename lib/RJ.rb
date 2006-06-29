@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("RJ")
+
 class Validacao
   def setup
     @pesos = ["2", "7", "6", "5", "4", "3", "2"]

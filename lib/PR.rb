@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("PR")
+
 module ValidacaoInscricaoEstadual
   class PR < Base
     def setup

@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("CE")
+
 module ValidacaoInscricaoEstadual
   class CE < Base
     def setup

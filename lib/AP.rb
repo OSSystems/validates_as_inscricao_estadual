@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("AP")
+
 module ValidacaoInscricaoEstadual
   class AP < Base
     def setup

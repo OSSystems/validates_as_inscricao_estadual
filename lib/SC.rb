@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("SC")
+
 module ValidacaoInscricaoEstadual
   class SC < Base
     def setup

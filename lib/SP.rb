@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("SP")
+
 module ValidacaoInscricaoEstadual
   class SP < Base
     private

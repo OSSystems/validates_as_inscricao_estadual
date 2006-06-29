@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("PE")
+
 module ValidacaoInscricaoEstadual
   class PE < Base
     def setup

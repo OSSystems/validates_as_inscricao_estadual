@@ -1,3 +1,5 @@
+ValidacaoInscricaoEstadual.registrar_estado("DF")
+
 module ValidacaoInscricaoEstadual
   class DF < Base
     def setup
