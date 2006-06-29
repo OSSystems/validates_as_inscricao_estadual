@@ -22,16 +22,16 @@ module ValidacaoInscricaoEstadual
     
     private
     def validar
-      t = 0
+      acertos = 0
       1.upto(@digitos_tamanho) do |i|
         eval <<-EOF
-      if @digito#{i}.to_i ==  @cadastro[@cadastro.length-i].to_i 
-        t += 1
-      end
-      EOF
+        if @digito#{i}.to_i ==  @cadastro[@cadastro.length-i].to_i 
+          acertos += 1
+        end
+        EOF
       end
 
-      if t == @digitos_tamanho
+      if acertos == @digitos_tamanho
         return true
       else
         return false
