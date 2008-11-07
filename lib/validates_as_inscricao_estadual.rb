@@ -1,6 +1,6 @@
 # validates_as_inscricao_estadual.rb - initialize the plugin
 #  
-#  Copyright (c) 2006 O.S. Systems
+#  Copyright (c) 2006, 2008 O.S. Systems
 #  
 #  Authors: André Ribeiro Camargo <andre@boaideia.inf.br>,
 #           Luis Gustavo S. Barreto <gustavo@ossystems.com.br>
