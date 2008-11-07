@@ -1,7 +1,7 @@
 require 'test/unit'
-require '../lib/validates_as_inscricao_estadual'
+require File.dirname(__FILE__) + '/../lib/validates_as_inscricao_estadual'
 
-class EmailsTest < Test::Unit::TestCase
+class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
   def test_ac
     assert ValidacaoInscricaoEstadual::AC.new("AC", "0100482300112").valido?, "Numero valido falhou"
     assert ValidacaoInscricaoEstadual::AC.new("AC", "01.004.823/001-12").valido?, "Numero(e outros caracteres) valido falhou"
