@@ -136,7 +136,7 @@ module ActiveRecord
           valido = false
           ValidacaoInscricaoEstadual.estados.each do |estado|
             valido = eval("ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?")
-            break unless valido 
+            break if valido 
           end
             
           unless valido
