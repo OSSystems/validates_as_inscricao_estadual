@@ -129,18 +129,14 @@ module ActiveRecord
       def validates_as_inscricao_estadual(*attr_names)
         configuration = { :message => "is invalid" }
         configuration.update(attr_names.pop) if attr_names.last.is_a?(Hash)
- 	
+
         validates_each(attr_names, configuration) do |record, attr_name, value|
           next if value.blank?
           
           valido = false
           ValidacaoInscricaoEstadual.estados.each do |estado|
-            eval <<-EOF
-            if ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?
-              valido = true
-              break
-            end
-            EOF
+            valido = eval("ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?")
+            break unless valido 
           end
             
           unless valido
