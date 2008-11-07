@@ -49,11 +49,7 @@ module ValidacaoInscricaoEstadual
         EOF
       end
 
-      if acertos == @digitos_tamanho
-        return true
-      else
-        return false
-      end
+      acertos == @digitos_tamanho
     end
 
     private
