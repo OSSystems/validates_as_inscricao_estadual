@@ -76,16 +76,7 @@ module ValidacaoInscricaoEstadual
 
     public
     def valido?
-    #  print "testando #{@uf} => " if @uf == "AC"
-      if validar_formato
-   #     print "passo" if @uf == "AC"
-  #      puts if @uf == "AC"
-        return validar
-      else
- #       print "nao" if @uf == "AC"
-#        puts if @uf == "AC"
-        return false
-      end
+      return validar_formato ? validar : false
     end
   end
 
