@@ -16,7 +16,7 @@ module ValidacaoInscricaoEstadual
                ]
 
       cadastro_sem_dv = @cadastro.to_s[0, @cadastro.to_s.length-1].to_i
-      
+
       p, d = 0
       faixas.each do |faixa_inicial, faixa_final, _p, _d|
         if cadastro_sem_dv.to_i >= faixa_inicial.to_s.to_i and cadastro_sem_dv.to_i <= faixa_final.to_s.to_i

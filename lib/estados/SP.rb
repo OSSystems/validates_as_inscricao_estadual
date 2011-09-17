@@ -8,30 +8,29 @@ module ValidacaoInscricaoEstadual
 
     def initialize(classe, cadastro)
       begin
- #       puts cadastro
         @cadastro = []
         @uf = classe
-        
+
         0.upto(cadastro.length-1) do |i|
           @cadastro.push(cadastro[i].chr)
         end
 
         setup
         calcular
-        
+
       rescue LoadError
         puts "Classe nao encontrada"
         exit
       end
     end
-    
+
     def setup
       @pesos = ["1", "3", "4", "5", "6", "7", "8", "10"]
       @pesos2 = ["3", "2", "10", "9", "8", "7", "6", "5", "4", "3", "2"]
       @pesos3 = ["1", "3", "4", "5", "6", "7", "8", "10"]
-      
+
       @rural = false
-      
+
       if @cadastro.to_s =~ /^P.*/
         @rural = true
       end
@@ -72,7 +71,7 @@ module ValidacaoInscricaoEstadual
       else
         @digitos_tamanho = 1
         @cadastro = @cadastro.to_s.scan(/[0-9]/).collect{|x| x.to_i}
-        
+
         cad = @cadastro[@cadastro.index(0)..@cadastro.length]
         cad = cad[0..cad.length-4]
 

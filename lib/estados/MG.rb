@@ -36,7 +36,7 @@ module ValidacaoInscricaoEstadual
 
       novo_cadastro = @cadastro[0..@cadastro.length-3].push(@digito2)
       resto =  multiplicar_pesos_com_numeros_cadastro2(novo_cadastro, @pesos2, 0) % 11
-      
+
       @digito1 = (resto <= 1) ? 0 : (11 - resto)
     end
 

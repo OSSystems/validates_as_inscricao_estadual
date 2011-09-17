@@ -20,12 +20,12 @@ module ValidacaoInscricaoEstadual
         @digito1 = (10 - resto)
 
         resto = multiplicar_pesos_com_numeros_cadastro(@cadastro[0..5].push(@digito1.to_s), @pesos, 0) % 10
-        @digito2 = (10 - resto)    
+        @digito2 = (10 - resto)
       elsif @cadastro.to_s =~ /^[6-9]/
         resto = multiplicar_pesos_com_numeros_cadastro(@cadastro, @pesos2) % 11
 
         @digito1 = (resto <= 1) ? 0 : (11 - resto)
-        
+
         resto = multiplicar_pesos_com_numeros_cadastro(@cadastro[0..5].push(@digito1.to_s), @pesos3, 0) % 11
         @digito2 = (11 - resto)
       end

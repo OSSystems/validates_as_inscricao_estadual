@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'test/unit'
 require File.dirname(__FILE__) + '/../lib/validates_as_inscricao_estadual'
 
@@ -32,41 +33,41 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
      assert ValidacaoInscricaoEstadual::BA.new("BA", "612345-57").valido?, "Numero(e outros caracteres) valido falhou"
      assert ValidacaoInscricaoEstadual::BA.new("BA", "12345663").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::BA.new("BA", "123456-63").valido?, "Numero(e outros caracteres) valido falhou"
-   end  
+   end
 
    def test_ce
      assert ValidacaoInscricaoEstadual::CE.new("CE", " 060000015").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::CE.new("CE", " 06000001-5").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::CE.new("CE", "455483548").valido? ), "Numero invalido passou"
      assert ( not ValidacaoInscricaoEstadual::CE.new("CE", "jfopw34985").valido? ), "Numero(e outros caracteres) invalido passou"
-   end  
+   end
 
    def test_df
      assert ValidacaoInscricaoEstadual::DF.new("DF", "0730000100109").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::DF.new("DF", "07300001001-09").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::DF.new("DF", "455483548").valido? ), "Numero invalido passou"
      assert ( not ValidacaoInscricaoEstadual::DF.new("DF", "jfopw34985").valido? ), "Numero(e outros caracteres) invalido passou"
-   end  
+   end
 
    def test_es
      assert ValidacaoInscricaoEstadual::ES.new("ES", "999999990").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::ES.new("ES", "999.999.99-0").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::ES.new("ES", "032119232").valido? ), "Numero invalido passou"
      assert ( not ValidacaoInscricaoEstadual::ES.new("ES", "JF23471").valido? ), "Numero(e outros caracteres) invalido passou"
-   end  
+   end
 
    def test_go
      assert ValidacaoInscricaoEstadual::GO.new("GO", "109876547").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::GO.new("GO", "10.987.654-7").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::GO.new("GO", "98340581").valido? ), "Numero invalido passou"
      assert ( not ValidacaoInscricaoEstadual::GO.new("GO", "XC08VC0X8").valido? ), "Numero(e outros caracteres) invalido passou"
-   end  
+   end
 
    def test_ma
      assert ValidacaoInscricaoEstadual::MA.new("MA", "120000385").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::MA.new("MA", "120.000.38-5").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::MA.new("MA", "98489333").valido? ), "Numero invalido passou"
-     assert ( not ValidacaoInscricaoEstadual::MA.new("MA", "123L1231Ç2").valido? ), "Numero(e outros caracteres) invalido passou"
+     assert ( not ValidacaoInscricaoEstadual::MA.new("MA", "123L1231Ã‡2").valido? ), "Numero(e outros caracteres) invalido passou"
    end
 
    def test_mt
@@ -85,7 +86,7 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
      assert ValidacaoInscricaoEstadual::MG.new("MG", "0623079040081").valido?, "Numero valido falhou"
      assert ValidacaoInscricaoEstadual::MG.new("MG", "062.307.904/0081").valido?, "Numero(e outros caracteres) valido falhou"
      assert ( not ValidacaoInscricaoEstadual::MG.new("MG", "834038021").valido? ), "Numero invalido passou"
-     assert ( not ValidacaoInscricaoEstadual::MG.new("MG", "34993934Ç").valido? ), "Numero(e outros caracteres) invalido passou"
+     assert ( not ValidacaoInscricaoEstadual::MG.new("MG", "34993934Ã‡").valido? ), "Numero(e outros caracteres) invalido passou"
    end
 
     def test_pa
@@ -120,7 +121,7 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
       assert ValidacaoInscricaoEstadual::PI.new("PI", "012345679").valido?, "Numero valido falhou"
       assert ValidacaoInscricaoEstadual::PI.new("PI", "01234567-9").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::PI.new("PI", "092399").valido? ), "Numero invalido passou"
-      assert ( not ValidacaoInscricaoEstadual::PI.new("PI", "Ç3,32,Ç.23").valido? ), "Numero(e outros caracteres) invalido passou"
+      assert ( not ValidacaoInscricaoEstadual::PI.new("PI", "Ã‡3,32,Ã‡.23").valido? ), "Numero(e outros caracteres) invalido passou"
     end
 
     def test_rj
@@ -141,7 +142,7 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
       assert ValidacaoInscricaoEstadual::RS.new("RS", "224/3658792").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::RS.new("RS", "23203002").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::RS.new("RS", "KJK3JK3JLK2").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_ro
       assert ValidacaoInscricaoEstadual::RO.new("RO", "101625213").valido?, "Numero valido falhou"
@@ -150,7 +151,7 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
       assert ValidacaoInscricaoEstadual::RO.new("RO", "0000.000.062.521-3").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::RO.new("RO", "23288903005").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::RO.new("RO", "KyuyK3JK3JLK2").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_rr
       assert ValidacaoInscricaoEstadual::RR.new("RR", "240066281").valido?, "Numero valido falhou"
@@ -175,14 +176,14 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
       assert ValidacaoInscricaoEstadual::RR.new("RR", "24001340-7").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::RR.new("RR", "12380755").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::RR.new("RR", "mcv,v9349").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_sc
       assert ValidacaoInscricaoEstadual::SC.new("SC", "251040852").valido?, "Numero valido falhou"
       assert ValidacaoInscricaoEstadual::SC.new("SC", "251.040.852").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::SC.new("SC", "94984895").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::SC.new("SC", "LK1231P3").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_sp
       assert ValidacaoInscricaoEstadual::SP.new("SP", "P011004243002").valido?, "Numero valido falhou"
@@ -192,19 +193,19 @@ class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
       assert ValidacaoInscricaoEstadual::SP.new("SP", "110.042.490.114").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::SP.new("SP", "9494456566695").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::SP.new("SP", "l3klk4kl34mm").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_se
       assert ValidacaoInscricaoEstadual::SE.new("SE", "271234563").valido?, "Numero valido falhou"
       assert ValidacaoInscricaoEstadual::SE.new("SE", "27123456-3").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::SE.new("SE", "994993221").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::SE.new("SE", "CVMMNHF25").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 
     def test_to
       assert ValidacaoInscricaoEstadual::TO.new("TO", "29010227836").valido?, "Numero valido falhou"
       assert ValidacaoInscricaoEstadual::TO.new("TO", "2901022783-6").valido?, "Numero(e outros caracteres) valido falhou"
       assert ( not ValidacaoInscricaoEstadual::TO.new("TO", "38094382").valido? ), "Numero invalido passou"
       assert ( not ValidacaoInscricaoEstadual::TO.new("TO", "cmkckm9345").valido? ), "Numero(e outros caracteres) invalido passou"
-    end    
+    end
 end

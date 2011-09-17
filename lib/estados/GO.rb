@@ -19,7 +19,7 @@ module ValidacaoInscricaoEstadual
       else
         @digito1 = 0
       end
-      
+
       @digito1 = (resto >= 2) ? (11 - resto) : nil
     end
   end

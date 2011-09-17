@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 # validates_as_inscricao_estadual.rb - initialize the plugin
-#  
+#
 #  Copyright (c) 2006, 2008 O.S. Systems
-#  
+#
 #  Authors: André Ribeiro Camargo <andre@boaideia.inf.br>,
 #           Luis Gustavo S. Barreto <gustavo@ossystems.com.br>
-# 
+#
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
 #   the Free Software Foundation; either version 2 of the License, or
@@ -25,7 +26,7 @@ module ValidacaoInscricaoEstadual
     attr_reader :digitos_tamanho
 
     def initialize(classe, cadastro)
-      begin 
+      begin
         @cadastro = cadastro.scan(/[0-9]/).collect{|x| x.to_i}
         @uf = classe
 
@@ -37,13 +38,13 @@ module ValidacaoInscricaoEstadual
         exit
       end
     end
-    
+
     private
     def validar
       acertos = 0
       1.upto(@digitos_tamanho) do |i|
         eval <<-EOF
-        if @digito#{i}.to_i == @cadastro[@cadastro.length-i].to_i 
+        if @digito#{i}.to_i == @cadastro[@cadastro.length-i].to_i
           acertos += 1
         end
         EOF
@@ -91,7 +92,7 @@ module ValidacaoInscricaoEstadual
   def self.estados
     @estados ||= []
   end
-  
+
   def self.registrar_estado(estado)
     estados.push(estado) if not estados.include?(estado)
   end
@@ -132,13 +133,13 @@ module ActiveRecord
 
         validates_each(attr_names, configuration) do |record, attr_name, value|
           next if value.blank?
-          
+
           valido = false
           ValidacaoInscricaoEstadual.estados.each do |estado|
             valido = eval("ValidacaoInscricaoEstadual::#{estado}.new(estado, value).valido?")
-            break if valido 
+            break if valido
           end
-            
+
           unless valido
             record.errors.add(attr_name, configuration[:message])
           end
