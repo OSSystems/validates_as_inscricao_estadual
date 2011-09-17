@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/validates_as_inscricao_estadual'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/validates_as_inscricao_estadual')
 
 class ValidatesAsInscricaoEstadualTest < Test::Unit::TestCase
   def test_ac

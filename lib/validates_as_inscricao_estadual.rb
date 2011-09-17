@@ -55,7 +55,7 @@ module ValidacaoInscricaoEstadual
 
     private
     def validar_formato
-      if @cadastro.to_s.length > @cadastro_tamanho
+      if @cadastro.join.length > @cadastro_tamanho
         puts "Numero de inscricao estadual muito grande => #{@uf}" if @uf == "AC"
         return false
       end
